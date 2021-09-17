@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -6,11 +6,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   templateUrl: 'vertical-tabs.component.html',
   styleUrls: [ 'vertical-tabs.component.scss' ]
 })
-export class VerticalTabsComponent implements OnInit, OnDestroy {
+export class VerticalTabsComponent {
 
-  constructor() {}
+  public selectedName = 'tab2';
 
-  public ngOnInit() {}
-
-  public ngOnDestroy() {}
+  public selectedNameChange(name) {
+    console.log('Selected Tab Name', name);
+  }
 }
