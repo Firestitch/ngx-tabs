@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Dialog</h1>
+<div mat-dialog-content>
+  <mat-tab-group fsTabs [(selectedName)]="tab" orientation="vertical">
+    <mat-tab label="Tab 1" name="tab-1">
+      <div fxLayout="column">
+        <mat-form-field>
+          <input
+            placeholder="Name"
+            matInput
+            [required]="true"
+            [(ngModel)]="account.name"
+            name="name">
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            placeholder="Email"
+            matInput
+            [(ngModel)]="account.email"
+            name="email">
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tab 2" name="tab-2">
+      <div class="content">
+        Ut in magna vitae enim tristique bibendum vitae a sapien. Quisque sed risus elit. Nulla risus mauris, ultricies ut orci eget, porta facilisis est. Aenean mollis rhoncus ante, ullamcorper vestibulum lorem sodales a. Phasellus ultricies aliquet libero, non vulputate sapien blandit in. Sed id tempor risus. Phasellus auctor nisi nulla, nec dignissim enim tempus a. Nunc nec sem elit.
+      </div>
+    </mat-tab>
+    <mat-tab label="Tab 3" name="tab-3">
+      <div class="content">
+        
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions>
+  <button 
+      mat-button 
+      type="button"
+      color="primary"
+      [matDialogClose]="null">
+    Save
+  </button>
+  <button 
+      mat-button 
+      type="button"
+      [matDialogClose]="null">
+    Close
+  </button>
+</div>

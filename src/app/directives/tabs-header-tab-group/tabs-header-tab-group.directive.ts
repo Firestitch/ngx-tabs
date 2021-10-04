@@ -62,10 +62,17 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
     }
     
     if(this.selectedNameChange.observers.length) {
+      // if(!this.selectedName) {
+      //   const fsTab: FsTabsTabDirective = this._getFsTab(this._tabGroup.selectedIndex);
+      //   if(fsTab) {
+      //     this.selectedNameChange.emit(fsTab.name);
+      //   }
+      // }
+
       this._tabGroup.selectedIndexChange
       .pipe(
         map((index: number) => {
-          return this._fsTabs.toArray()[index];
+          return this._getFsTab(index);
         }),
         filter((tab) => (!!tab && (this.selectedName === undefined || tab.name !== this.selectedName))),
         takeUntil(this._destroy$),
@@ -75,5 +82,10 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
         this.selectedNameChange.emit(tab.name);
       });
     }
+  }
+
+  private _getFsTab(index: number): FsTabsTabDirective {
+    const fsTabs = this._fsTabs.toArray();
+    return fsTabs[index];
   }
 }

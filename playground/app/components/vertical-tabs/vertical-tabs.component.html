@@ -2,7 +2,7 @@
     orientation="vertical" 
     [(selectedName)]="selectedName"
     (selectedNameChange)="selectedNameChange($event)">
-  <mat-tab label="Tab 1">
+  <mat-tab label="Tab 1" name="tab1">
     <ng-template matTabContent>
       Tab 1 Content
     </ng-template>
@@ -14,27 +14,33 @@
     </ng-template>
   </mat-tab>
 
-  <mat-tab label="Tab 3">
+  <mat-tab label="Tab 3" name="tab3">
     <ng-template matTabContent>
       Tab 3 Content
     </ng-template>
   </mat-tab>
 
-  <mat-tab label="Tab 4">
+  <mat-tab label="Tab 4" name="tab4">
     <ng-template matTabContent>
       Tab 4 Content
     </ng-template>
   </mat-tab>
 
-  <mat-tab label="Tab 5">
+  <mat-tab label="Tab 5" name="tab5">
     <ng-template matTabContent>
       Tab 5 Content
     </ng-template>
   </mat-tab>
 
-  <mat-tab label="Tab 6">
+  <mat-tab label="Tab 6" name="tab6">
     <ng-template matTabContent>
       Tab 6 Content
     </ng-template>
   </mat-tab>
 </mat-tab-group>
+
+<fieldset>
+  <legend>Selected Tab</legend>
+  {{selectedName}}
+</fieldset>
+

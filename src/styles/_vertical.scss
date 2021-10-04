@@ -2,15 +2,6 @@
 @use '~@firestitch/style/variables' as fs-style-variables;
 
 .fs-tabs-vertical {
-  .mat-tab-body-content,
-  .mat-tab-body-wrapper {
-    overflow: visible;
-  }
-
-  .mat-tab-body.mat-tab-body-active {
-    overflow: visible;
-    right: inherit;
-  }
 
   .mat-dialog-content {
     margin-bottom: -24px;

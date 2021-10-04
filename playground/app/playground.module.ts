@@ -13,7 +13,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppMaterialModule } from './material.module';
 import {
   KitchenSinkComponent,
-  ExamplesComponent
 } from './components';
 import { AppComponent } from './app.component';
 import { KitchenSinkConfigureComponent } from './components/kitchen-sink-configure';
@@ -22,6 +21,8 @@ import { TabAComponent, TabBComponent, TabCComponent, TabDComponent } from './co
 import { FsDialogModule } from '@firestitch/dialog';
 import { DialogComponent } from './components/tabs/tab-a/dialog/dialog.component';
 import { VerticalTabsComponent } from './components/vertical-tabs/vertical-tabs.component';
+import { DialogVerticalComponent } from './components/dialog/dialog-vertical.component';
+import { DialogVerticalTabsComponent } from './components/dialog-vertical-tabs/dialog-vertical-tabs.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,6 @@ const routes: Routes = [
   ],
   declarations: [
     AppComponent,
-    ExamplesComponent,
     KitchenSinkComponent,
     KitchenSinkConfigureComponent,
     TabAComponent,
@@ -67,6 +67,8 @@ const routes: Routes = [
     TabDComponent,
     TabsComponent,
     DialogComponent,
+    DialogVerticalTabsComponent,
+    DialogVerticalComponent,
     VerticalTabsComponent,
   ],
 })
