@@ -15,7 +15,20 @@
   margin-left: -(variables.$tab-margin);
   margin-right: -(variables.$tab-margin);
 
+  .mat-tab-header-pagination {
+    display: none !important;
+  }
+
   .mat-tab-link, .mat-tab-label {
     height: variables.$tab-sticky-height;
+  }
+
+  .mat-tab-label-container {
+    overflow: auto;
+  }
+
+  .mat-tab-link, .mat-tab-label {
+    min-width: unset;
+    padding: 0 10px;
   }
 }
