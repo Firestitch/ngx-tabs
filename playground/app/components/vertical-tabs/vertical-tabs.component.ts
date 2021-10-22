@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class VerticalTabsComponent {
 
-  public selectedName = 'tab1';
+  public selectedName = 'tab2';
 
   public selectedNameChange(name) {
     console.log('Selected Tab Name', name);

@@ -16,14 +16,14 @@ export class FsTabsHeaderNavDirective extends FsTabsHeaderBaseDirective {
     _renderer: Renderer2,
     _breakpointObserver: BreakpointObserver,
     _ngZone: NgZone,
-    @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,
-    private _el: ElementRef,
+    _el: ElementRef,
+    @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,    
   ) {
-    super(_renderer, _breakpointObserver, _ngZone, _tabsConfig);
+    super(_renderer, _breakpointObserver, _ngZone, _el, _tabsConfig);
   }
 
-  protected _initTargetElement() {
-    this._elementRef = this._el;
+  public getMatTabHeaderEl() {
+    return this.element;
   }
 
 }

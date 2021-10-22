@@ -1,19 +1,10 @@
 @use './variables';
 
-.mat-dialog-container {
-  .fs-tabs-sticky {
-    margin-left: -(variables.$tab-dialog-margin);
-    margin-right: -(variables.$tab-dialog-margin);
-  }
-}
-
 .fs-tabs-sticky {
   position: sticky !important;
   top: 0;
   z-index: 2;
   background-color: #fff;
-  margin-left: -(variables.$tab-margin);
-  margin-right: -(variables.$tab-margin);
 
   .mat-tab-header-pagination {
     display: none !important;

@@ -1,4 +1,7 @@
-import { ContentChildren, Directive, ElementRef, EventEmitter, Inject, Input, NgZone, Optional, Output, QueryList, Renderer2 } from '@angular/core';
+import { 
+  ContentChildren, Directive, ElementRef, EventEmitter, Inject, 
+  Input, NgZone, Optional, Output, QueryList, Renderer2 
+} from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { MAT_TABS_CONFIG, MatTabGroup } from '@angular/material/tabs';
@@ -41,15 +44,20 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
     _renderer: Renderer2,
     _breakpointObserver: BreakpointObserver,
     _ngZone: NgZone,
+    _el: ElementRef,
     @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,
     @Optional() private _tabGroup: MatTabGroup,
   ) {
-    super(_renderer, _breakpointObserver, _ngZone, _tabsConfig);
+    super(_renderer, _breakpointObserver, _ngZone, _el, _tabsConfig);
+  }
+  
+  public getMatTabHeaderEl() {
+    return (this._tabGroup?._tabHeader as any)._elementRef?.nativeElement;
   }
 
-  protected _initTargetElement() {
-    this._elementRef = (this._tabGroup?._tabHeader as any)._elementRef as ElementRef;
-
+  public ngAfterViewInit(): void {
+    super.ngAfterViewInit();
+    
     if(this.selectedName) {
       const index = this._fsTabs
       .toArray().findIndex((fsTab: FsTabsTabDirective) => {
@@ -62,13 +70,6 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
     }
     
     if(this.selectedNameChange.observers.length) {
-      // if(!this.selectedName) {
-      //   const fsTab: FsTabsTabDirective = this._getFsTab(this._tabGroup.selectedIndex);
-      //   if(fsTab) {
-      //     this.selectedNameChange.emit(fsTab.name);
-      //   }
-      // }
-
       this._tabGroup.selectedIndexChange
       .pipe(
         map((index: number) => {
