@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Inject, NgZone, Renderer2, } from '@angular/core';
+import { Directive, ElementRef, Inject, Input, NgZone, Renderer2, } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { FsTabsHeaderBaseDirective } from '../tabs-header-base/tabs-header-base';
@@ -9,8 +9,14 @@ import { IFsTabsConfig } from '../../interfaces/tabs-config.interface';
 @Directive({
   selector: 'mat-tab-nav-bar, [mat-tab-nav-bar], [matTabNavBar]',
   exportAs: 'fsTabsHeaderNav',
+  host: {
+    '[class.fs-tabs-vertical]': 'orientation === "vertical"',
+  },
 })
 export class FsTabsHeaderNavDirective extends FsTabsHeaderBaseDirective {
+
+  @Input()
+  public orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   constructor(
     _renderer: Renderer2,

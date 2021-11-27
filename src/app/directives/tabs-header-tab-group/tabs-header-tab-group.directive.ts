@@ -14,7 +14,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 
 
 @Directive({
-  selector: 'mat-tab-group, matTabGroup, [matTabGroup], [mat-tab-nav-bar]',
+  selector: 'mat-tab-group, matTabGroup, [matTabGroup]',
   exportAs: 'fsTabsHeaderTabGroup',
   host: {
     '[class.fs-tabs-vertical]': 'orientation === "vertical"',
