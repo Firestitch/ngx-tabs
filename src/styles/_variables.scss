@@ -1,6 +1,6 @@
+@use '~@angular/material' as mat;
 @use '~@firestitch/style/variables' as fs-style-variables;
-@use '~@angular/material/_theming.scss' as mat-theme;
 
-$primary-color: mat-theme.mat-color(fs-style-variables.$palette) !default;
+$primary-color: mat.get-color-from-palette(fs-style-variables.$palette) !default;
 
 $tab-sticky-height: 35px !default;
