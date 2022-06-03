@@ -1,7 +1,10 @@
 @use '../tools/assets/playground.scss';
+@use '~@firestitch/style/variables' with (
+  $palette: playground.$primary-palette
+);
 
-@use '~@firestitch/style/styles';
 @use '../src/styles' as fs-tabs;
 
 @import '~@firestitch/message/styles';
 @import "~@firestitch/drawer/styles";
+
