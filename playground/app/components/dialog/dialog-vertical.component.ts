@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -11,11 +11,12 @@ import { delay, tap } from 'rxjs/operators';
 
 @Component({
   templateUrl: 'dialog-vertical.component.html',
-  styleUrls: ['dialog-vertical.component.scss']
+  styleUrls: ['dialog-vertical.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogVerticalComponent  {
 
-  public tab = 'tab-1';
+  public tab = 'tab-2';
   public account = { id: 1, name: '', email: '' };
 
   public constructor(

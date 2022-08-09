@@ -1,4 +1,5 @@
 import { 
+  ChangeDetectorRef,
   ContentChildren, Directive, ElementRef, EventEmitter, Inject, 
   Input, NgZone, Optional, Output, QueryList, Renderer2 
 } from '@angular/core';
@@ -45,6 +46,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
     _breakpointObserver: BreakpointObserver,
     _ngZone: NgZone,
     _el: ElementRef,
+    private _cdRef: ChangeDetectorRef,
     @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,
     @Optional() private _tabGroup: MatTabGroup,
   ) {
@@ -57,7 +59,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
 
   public ngAfterViewInit(): void {
     super.ngAfterViewInit();
-    
+   
     if(this.selectedName) {
       const index = this._fsTabs
       .toArray().findIndex((fsTab: FsTabsTabDirective) => {
@@ -65,7 +67,10 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
       });
 
       if(index !== -1) {
-        this._tabGroup.selectedIndex = index;
+        setTimeout(() => {
+          this._tabGroup.selectedIndex = index;
+          this._cdRef.markForCheck();
+        }, 200);
       }
     }
     
