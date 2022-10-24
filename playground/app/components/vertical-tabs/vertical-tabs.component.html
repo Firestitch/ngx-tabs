@@ -1,6 +1,6 @@
 <mat-tab-group 
     orientation="vertical" 
-    [(selectedName)]="selectedName"
+    [(selectedName)]="tab"
     (selectedNameChange)="selectedNameChange($event)">
   <mat-tab label="Tab 1" name="tab1">
     <ng-template matTabContent>
@@ -39,9 +39,16 @@
   </mat-tab>
 </mat-tab-group>
 
+<button 
+      type="button"
+      mat-raised-button
+      (click)="tab = 'tab3'">
+    Goto Tab 3
+  </button>
+
 <fieldset>
   <legend>Selected Tab</legend>
-  {{selectedName}}
+  {{tab}}
 </fieldset>
 
 <br><br><br>

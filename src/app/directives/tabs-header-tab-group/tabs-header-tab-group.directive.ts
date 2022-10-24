@@ -1,7 +1,7 @@
 import { 
   ChangeDetectorRef,
   ContentChildren, Directive, ElementRef, EventEmitter, Inject, 
-  Input, NgZone, Optional, Output, QueryList, Renderer2 
+  Input, NgZone, OnChanges, Optional, Output, QueryList, Renderer2, SimpleChange, SimpleChanges 
 } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
@@ -27,7 +27,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
     },
   ]
 })
-export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
+export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective implements OnChanges {
 
   @ContentChildren(FsTabsTabDirective, { descendants: true }) 
   private _fsTabs: QueryList<FsTabsTabDirective>;
@@ -61,17 +61,9 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
     super.ngAfterViewInit();
    
     if(this.selectedName) {
-      const index = this._fsTabs
-      .toArray().findIndex((fsTab: FsTabsTabDirective) => {
-        return this.selectedName === fsTab.name;
-      });
-
-      if(index !== -1) {
-        setTimeout(() => {
-          this._tabGroup.selectedIndex = index;
-          this._cdRef.markForCheck();
-        }, 200);
-      }
+      setTimeout(() => {
+        this.selectTab(this.selectedName);
+      }, 200);
     }
     
     if(this.selectedNameChange.observers.length) {
@@ -88,6 +80,24 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective {
         this.selectedNameChange.emit(tab.name);
       });
     }
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (!changes?.selectedName.firstChange) {
+      this.selectTab(changes.selectedName.currentValue);
+    }
+  }
+
+  public selectTab(name: string): void {
+    const index = this._fsTabs
+      .toArray().findIndex((fsTab: FsTabsTabDirective) => {
+        return name === fsTab.name;
+      });
+
+      if(index !== -1) {
+        this._tabGroup.selectedIndex = index;
+        this._cdRef.markForCheck();
+      }
   }
 
   private _getFsTab(index: number): FsTabsTabDirective {
