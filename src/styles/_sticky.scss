@@ -23,3 +23,9 @@
     padding: 0 10px;
   }
 }
+
+.mat-tab-nav-bar {
+  .mat-tab-link-container {
+    overflow: auto;
+  }
+}
