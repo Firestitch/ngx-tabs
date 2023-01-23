@@ -1,3 +1,10 @@
 @forward './styles/variables' as fs-tabs-*;
 @forward './styles/vertical';
 @forward './styles/sticky';
+
+.mat-tab-label:not(.mat-tab-label-active),
+.mat-tab-link {
+  &:hover {
+    background-color: #ececec !important;
+  }
+}

@@ -23,7 +23,7 @@ import { DialogComponent } from './components/tabs/tab-a/dialog/dialog.component
 import { VerticalTabsComponent } from './components/vertical-tabs/vertical-tabs.component';
 import { DialogVerticalComponent } from './components/dialog/dialog-vertical.component';
 import { DialogVerticalTabsComponent } from './components/dialog-vertical-tabs/dialog-vertical-tabs.component';
-
+import { HorizontalLinkTabsComponent } from './components/horizontal-link-tabs/horizontal-link-tabs.component';
 
 const routes: Routes = [
   {
@@ -70,6 +70,7 @@ const routes: Routes = [
     DialogVerticalTabsComponent,
     DialogVerticalComponent,
     VerticalTabsComponent,
+    HorizontalLinkTabsComponent,
   ],
 })
 export class PlaygroundModule {
