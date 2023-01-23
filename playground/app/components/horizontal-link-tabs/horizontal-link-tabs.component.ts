@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: 'horizontal-link-tabs.component.html',
 })
 export class HorizontalLinkTabsComponent {
-  public tab = 'tab2';
   public navLinks = [
     {
       path: ['tabs'],
