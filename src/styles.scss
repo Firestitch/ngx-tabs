@@ -1,10 +1,15 @@
 @forward './styles/variables' as fs-tabs-*;
 @forward './styles/vertical';
 @forward './styles/sticky';
+@use '~@firestitch/style/variables' as fs-style-variables;
+@use '~@angular/material' as mat;
+
+$primary-color: mat.get-color-from-palette(fs-style-variables.$palette) !default;
 
 .mat-tab-label:not(.mat-tab-label-active),
-.mat-tab-link {
+.mat-tab-link:not(.mat-tab-label-active) {
   &:hover {
-    background-color: #ececec;
+    background-color: rgba($primary-color, 0.2);
+    border-radius: 4px;
   }
 }
