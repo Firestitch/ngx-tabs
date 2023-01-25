@@ -9,7 +9,7 @@ $primary-color: mat.get-color-from-palette(fs-style-variables.$palette) !default
 .mat-tab-label:not(.mat-tab-label-active),
 .mat-tab-link:not(.mat-tab-label-active) {
   &:hover {
-    background-color: rgba($primary-color, 0.2);
+    background-color: rgb(red($primary-color), green($primary-color), blue($primary-color), 0.2);
     border-radius: 4px;
   }
 }
