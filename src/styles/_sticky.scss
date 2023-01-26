@@ -6,26 +6,20 @@
   z-index: 2;
   background-color: #fff;
 
-  .mat-tab-header-pagination {
-    display: none !important;
-  }
-
   .mat-tab-link, .mat-tab-label {
     height: variables.$tab-sticky-height;
   }
 
   .mat-tab-label-container {
-    overflow: auto;
+    overflow: hidden;
+  }
+
+  .mat-tab-link-container {
+    overflow: hidden;
   }
 
   .mat-tab-link, .mat-tab-label {
     min-width: unset;
     padding: 0 10px;
-  }
-}
-
-.mat-tab-nav-bar {
-  .mat-tab-link-container {
-    overflow: auto;
   }
 }

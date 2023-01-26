@@ -38,6 +38,12 @@ const routes: Routes = [
       { path: 'b', component: TabBComponent },
       { path: 'c', component: TabCComponent },
       { path: 'd', component: TabDComponent },
+      { path: 'e', component: TabAComponent },
+      { path: 'h', component: TabBComponent },
+      { path: 'f', component: TabCComponent },
+      { path: 'g', component: TabDComponent },
+      { path: 'j', component: TabAComponent },
+
     ]
   },
 ];
