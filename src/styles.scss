@@ -2,7 +2,7 @@
 @forward './styles/vertical';
 @forward './styles/sticky';
 @use '~@firestitch/style/variables' as fs-style-variables;
-@use '~@angular/material' as mat;
+@use 'node_modules/@angular/material' as mat;
 
 $primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-rgb) !default;
 
