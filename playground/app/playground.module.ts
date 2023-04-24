@@ -52,7 +52,9 @@ const routes: Routes = [
   bootstrap: [ AppComponent ],
   imports: [
     BrowserModule,
-    FsTabsModule.forRoot(),
+    FsTabsModule.forRoot({
+      mobileSticky: true,
+    }),
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,

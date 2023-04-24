@@ -3,8 +3,10 @@ import {
   Directive,
   ElementRef,
   Inject,
+  Input,
   NgZone,
   OnDestroy,
+  OnInit,
   Renderer2,
 } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -16,19 +18,27 @@ import { FS_TABS_CONFIG } from '../../fs-tabs-config.provider';
 import { IFsTabsConfig } from '../../interfaces/tabs-config.interface';
 
 @Directive()
-export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDestroy {
+export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDestroy, OnInit {
+  
+  @Input()
+  public mobileSticky;
 
   protected _destroy$ = new Subject<void>();
 
   public abstract getMatTabHeaderEl();
 
   constructor(
+    @Inject(FS_TABS_CONFIG) private _tabsConfig: IFsTabsConfig,
     private _renderer: Renderer2,
     private _breakpointObserver: BreakpointObserver,
     private _ngZone: NgZone,
     private _el: ElementRef,
-    @Inject(FS_TABS_CONFIG) private _tabsConfig: IFsTabsConfig,
-  ) {
+  ) {}
+
+  public ngOnInit(): void {
+    if(this.mobileSticky === undefined) {
+      this.mobileSticky = this._tabsConfig.mobileSticky;
+    }
   }
 
   public get element() {
@@ -62,10 +72,12 @@ export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDest
   }
 
   private _updateStickyPosition(mobileMode: boolean): void {
-    if (mobileMode) {
-      this._renderer.addClass(this.getMatTabHeaderEl(), 'fs-tabs-sticky');
-    } else {
-      this._renderer.removeClass(this.getMatTabHeaderEl(), 'fs-tabs-sticky');
+    if(this.mobileSticky) {
+      if (mobileMode) {
+        this._renderer.addClass(this.getMatTabHeaderEl(), 'fs-tabs-sticky');
+      } else {
+        this._renderer.removeClass(this.getMatTabHeaderEl(), 'fs-tabs-sticky');
+      }
     }
   }
 

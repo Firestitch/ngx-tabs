@@ -24,7 +24,15 @@ import { IFsTabsConfig } from './interfaces/tabs-config.interface';
   ],
 })
 export class FsTabsModule {
-  static forRoot(config: IFsTabsConfig = { mobileBreakpoint: 600 }): ModuleWithProviders<FsTabsModule> {
+  static forRoot(config?: IFsTabsConfig): ModuleWithProviders<FsTabsModule> {
+    config = {
+      ...{ 
+        mobileBreakpoint: 600,
+        mobileSticky: true,
+      },
+      ...config,
+    };
+
     return {
       ngModule: FsTabsModule,
       providers: [

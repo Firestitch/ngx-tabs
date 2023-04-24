@@ -50,7 +50,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
     @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,
     @Optional() private _tabGroup: MatTabGroup,
   ) {
-    super(_renderer, _breakpointObserver, _ngZone, _el, _tabsConfig);
+    super(_tabsConfig, _renderer, _breakpointObserver, _ngZone, _el);
   }
   
   public getMatTabHeaderEl() {

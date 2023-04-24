@@ -19,13 +19,13 @@ export class FsTabsHeaderNavDirective extends FsTabsHeaderBaseDirective {
   public orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   constructor(
+    @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,    
     _renderer: Renderer2,
     _breakpointObserver: BreakpointObserver,
     _ngZone: NgZone,
     _el: ElementRef,
-    @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,    
   ) {
-    super(_renderer, _breakpointObserver, _ngZone, _el, _tabsConfig);
+    super(_tabsConfig, _renderer, _breakpointObserver, _ngZone, _el);
   }
 
   public getMatTabHeaderEl() {
