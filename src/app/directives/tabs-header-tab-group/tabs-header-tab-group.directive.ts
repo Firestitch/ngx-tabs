@@ -73,18 +73,28 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
     }
     
     this._tabGroup.selectedIndexChange
-    .pipe(
-      map((index: number) => {
-        return this._getFsTab(index);
-      }),
-      filter((tab) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
-      takeUntil(this._destroy$),
-    )        
-    .subscribe((tab: FsTabsTabDirective) => {
-      this.selected = tab.name;
-      this.selectedChange.emit(tab.name);
-      this.selectedDataChange.emit(tab.data);
-    });
+      .pipe(
+        map((index: number) => {
+          return this._getFsTab(index);
+        }),
+        filter((tab) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
+        takeUntil(this._destroy$),
+      )        
+      .subscribe((tab: FsTabsTabDirective) => {
+        this.selected = tab.name;
+        this.selectedChange.emit(tab.name);
+      });
+
+    this._tabGroup.selectedIndexChange
+      .pipe(
+        map((index: number) => {
+          return this._getFsTab(index);
+        }),
+        takeUntil(this._destroy$),
+      )        
+      .subscribe((tab: FsTabsTabDirective) => {
+        this.selectedDataChange.emit(tab.data);
+      });
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
