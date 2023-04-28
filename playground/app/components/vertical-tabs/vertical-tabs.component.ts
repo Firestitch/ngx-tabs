@@ -10,7 +10,7 @@ export class VerticalTabsComponent {
 
   public tab = 'tab2';
 
-  public selectedNameChange(name) {
+  public selectedChange(name) {
     console.log('Selected Tab Name', name);
   }
 }

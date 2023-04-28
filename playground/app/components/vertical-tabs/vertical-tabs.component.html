@@ -1,7 +1,7 @@
 <mat-tab-group 
     orientation="vertical" 
-    [(selectedName)]="tab"
-    (selectedNameChange)="selectedNameChange($event)">
+    [(selected)]="tab"
+    (selectedChange)="selectedChange($event)">
   <mat-tab label="Tab 1" name="tab1">
     <ng-template matTabContent>
       Tab 1 Content

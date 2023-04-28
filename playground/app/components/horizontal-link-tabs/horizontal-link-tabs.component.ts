@@ -13,7 +13,7 @@ export class HorizontalLinkTabsComponent {
     },
   ];
 
-  public selectedNameChange(name) {
+  public selectedChange(name) {
     console.log('Selected Tab Name', name);
   }
 }

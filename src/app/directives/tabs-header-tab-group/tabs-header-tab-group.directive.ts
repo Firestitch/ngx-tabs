@@ -25,7 +25,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
       provide: MAT_TABS_CONFIG,
       useValue: { animationDuration : '0ms' },
     },
-  ]
+  ],
 })
 export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective implements OnChanges {
 
@@ -36,10 +36,16 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
   public orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   @Input()
-  public selectedName;
+  public selected;
 
   @Output()
-  public selectedNameChange = new EventEmitter<string>();
+  public selectedChange = new EventEmitter<string>();
+
+  @Input()
+  public selectedData;
+
+  @Output()
+  public selectedDataChange = new EventEmitter<any>();
 
   constructor(
     _renderer: Renderer2,
@@ -60,31 +66,30 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
   public ngAfterViewInit(): void {
     super.ngAfterViewInit();
    
-    if(this.selectedName) {
+    if(this.selected) {
       setTimeout(() => {
-        this.selectTab(this.selectedName);
-      }, 200);
-    }
-    
-    if(this.selectedNameChange.observers.length) {
-      this._tabGroup.selectedIndexChange
-      .pipe(
-        map((index: number) => {
-          return this._getFsTab(index);
-        }),
-        filter((tab) => (!!tab && (this.selectedName === undefined || tab.name !== this.selectedName))),
-        takeUntil(this._destroy$),
-      )        
-      .subscribe((tab: FsTabsTabDirective) => {
-        this.selectedName = tab.name;
-        this.selectedNameChange.emit(tab.name);
+        this.selectTab(this.selected);
       });
     }
+    
+    this._tabGroup.selectedIndexChange
+    .pipe(
+      map((index: number) => {
+        return this._getFsTab(index);
+      }),
+      filter((tab) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
+      takeUntil(this._destroy$),
+    )        
+    .subscribe((tab: FsTabsTabDirective) => {
+      this.selected = tab.name;
+      this.selectedChange.emit(tab.name);
+      this.selectedDataChange.emit(tab.data);
+    });
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (!changes?.selectedName.firstChange) {
-      this.selectTab(changes.selectedName.currentValue);
+    if (!changes?.selected.firstChange) {
+      this.selectTab(changes.selected.currentValue);
     }
   }
 
