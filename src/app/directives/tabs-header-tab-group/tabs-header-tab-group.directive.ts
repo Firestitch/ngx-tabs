@@ -98,7 +98,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (!changes?.selected.firstChange) {
+    if (!changes.selected?.firstChange) {
       this.selectTab(changes.selected.currentValue);
     }
   }
