@@ -19,6 +19,7 @@ import { filter, map, takeUntil } from 'rxjs/operators';
   exportAs: 'fsTabsHeaderTabGroup',
   host: {
     '[class.fs-tabs-vertical]': 'orientation === "vertical"',
+    '[class.fs-tabs-horizontal]': 'orientation === "horizontal"',
   },
   providers: [
     {

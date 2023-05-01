@@ -2,7 +2,6 @@
 @use '~@firestitch/style/variables' as fs-style-variables;
 
 .fs-tabs-vertical {
-
   .mat-dialog-content {
     margin-bottom: -24px;
   }
@@ -64,4 +63,48 @@
       }
     }
   }
+}
+
+.fs-tabs-vertical .fs-tabs-horizontal {
+  
+  @media (max-width: fs-style-variables.$break-xsmall) {
+    .buttons button {
+      width: unset;
+      display: unset;
+    }
+  }
+
+  @media (min-width: fs-style-variables.$break-xsmall) {  
+    .mat-ink-bar {
+      display: unset;
+    }
+
+    .mat-tab-label {
+      height: 48px;
+      text-transform: uppercase;
+      font-size: unset;
+      min-width: 160px;
+      justify-content: center;
+      opacity: unset; 
+      color: rgba(0, 0, 0, 0.87);
+      opacity: .6; 
+
+      &.mat-tab-label-active {
+        background-color: unset;
+        border-radius: unset;
+      }      
+    }
+
+    &.mat-tab-group {
+      .mat-tab-labels {
+        flex-direction: unset;
+      }
+    }
+
+    .mat-tab-nav-bar,
+    .mat-tab-header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+  }
+
 }

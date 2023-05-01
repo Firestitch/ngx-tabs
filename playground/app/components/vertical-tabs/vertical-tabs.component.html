@@ -5,6 +5,20 @@
   <mat-tab label="Tab 1" name="tab1">
     <ng-template matTabContent>
       Tab 1 Content
+
+      <mat-tab-group>
+        <mat-tab label="Inner 1">
+          <ng-template matTabContent>
+            Inner Tabs 1
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Inner 2">
+          <ng-template matTabContent>
+            Inner Tabs 2
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+        
     </ng-template>
   </mat-tab>
 
