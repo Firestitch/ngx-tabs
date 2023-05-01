@@ -1,5 +1,6 @@
 @use './variables';
 @use '~@firestitch/style/variables' as fs-style-variables;
+@use '@angular/material' as mat;
 
 .fs-tabs-vertical {
   .mat-dialog-content {
@@ -14,97 +15,53 @@
   }
 
   @media (min-width: fs-style-variables.$break-xsmall) {  
-    .mat-ink-bar {
-      display: none;
-    }
-
-    .mat-tab-label,
-    .mat-tab-link {
-      text-transform: initial;
-      font-size: 109%;
-      justify-content: start;
-      min-width: auto;
-      height: 38px;
-      opacity: 1;  
-
-      &.mat-tab-label-active {
-        background-color: variables.$primary-color;
-        color: #fff;
-        border-radius: 4px;
-      }      
-    }
-
-    &.mat-tab-nav-bar {
-      margin: 0;
-      border: 0;
-      width: auto;
+    > .mat-tab-header {
+      border: none;
       margin-right: 40px;
 
-      .mat-tab-links {
+      .mat-ink-bar {
+        display: none;
+      }
+
+      .mat-tab-label,
+      .mat-tab-link {
+        text-transform: initial;
+        font-size: 109%;
+        justify-content: start;
+        min-width: auto;
+        height: 38px;
+        opacity: 1;  
+
+        &.mat-tab-label-active {
+          background-color: variables.$primary-color;
+          color: #fff;
+          border-radius: 4px;
+        }      
+      }
+
+      .mat-tab-labels {
         flex-direction: column;
-        display: inline-flex;
+      }
+
+      &.mat-tab-nav-bar {
+        margin: 0;
+        border: 0;
+        width: auto;
+        margin-right: 40px;
+
+        .mat-tab-links {
+          flex-direction: column;
+          display: inline-flex;
+        }
       }
     }
 
     &.mat-tab-group {
       flex-direction: row;
 
-      .mat-tab-body-wrapper {
+      > .mat-tab-body-wrapper {
         width: 100%;
       }
-
-      .mat-tab-header {
-        border: none;
-        margin-right: 40px;
-      }
-
-      .mat-tab-labels {
-        flex-direction: column;
-      }
     }
   }
-}
-
-.fs-tabs-vertical .fs-tabs-horizontal {
-  
-  @media (max-width: fs-style-variables.$break-xsmall) {
-    .buttons button {
-      width: unset;
-      display: unset;
-    }
-  }
-
-  @media (min-width: fs-style-variables.$break-xsmall) {  
-    .mat-ink-bar {
-      display: unset;
-    }
-
-    .mat-tab-label {
-      height: 48px;
-      text-transform: uppercase;
-      font-size: unset;
-      min-width: 160px;
-      justify-content: center;
-      opacity: unset; 
-      color: rgba(0, 0, 0, 0.87);
-      opacity: .6; 
-
-      &.mat-tab-label-active {
-        background-color: unset;
-        border-radius: unset;
-      }      
-    }
-
-    &.mat-tab-group {
-      .mat-tab-labels {
-        flex-direction: unset;
-      }
-    }
-
-    .mat-tab-nav-bar,
-    .mat-tab-header {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    }
-  }
-
 }
