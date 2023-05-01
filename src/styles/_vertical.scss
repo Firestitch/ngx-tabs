@@ -14,8 +14,9 @@
     }
   }
 
-  @media (min-width: fs-style-variables.$break-xsmall) {  
-    > .mat-tab-header {
+  @media (min-width: fs-style-variables.$break-xsmall)  {  
+    > .mat-tab-header,
+    &.mat-tab-header {
       border: none;
       margin-right: 40px;
 
@@ -24,7 +25,7 @@
       }
 
       .mat-tab-label,
-      .mat-tab-link {
+      > .mat-tab-link-container .mat-tab-link {
         text-transform: initial;
         font-size: 109%;
         justify-content: start;
