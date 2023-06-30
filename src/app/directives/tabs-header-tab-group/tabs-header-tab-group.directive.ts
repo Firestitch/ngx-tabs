@@ -78,7 +78,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
         map((index: number) => {
           return this._getFsTab(index);
         }),
-        filter((tab) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
+        filter((tab: FsTabsTabDirective) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
         takeUntil(this._destroy$),
       )        
       .subscribe((tab: FsTabsTabDirective) => {
@@ -99,7 +99,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.selected && !changes.selected.firstChange) {
+    if (changes.selected && !changes.selected.firstChange && changes.selected.currentValue !== undefined) {
       this.selectTab(changes.selected.currentValue);
     }
   }
