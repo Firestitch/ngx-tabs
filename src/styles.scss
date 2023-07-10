@@ -6,11 +6,42 @@
 
 $primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-rgb) !default;
 
+.mat-tab-nav-bar,
+.mat-tab-group { 
+  &:not(.fs-tabs-vertical) {
+    > .mat-tab-header,
+    > .mat-tab-link-container {
+      .mat-tab-label, 
+      .mat-tab-link { 
+        &.cdk-keyboard-focused.mat-tab-label-active {
+          background-color: transparent !important;
+          color: inherit ;
+        }
 
-.mat-tab-label:not(.mat-tab-label-active),
-.mat-tab-link:not(.mat-tab-label-active) {
-  &:hover {
-    background-color: rgba($primary-color, 0.2);
-    border-radius: 4px;
+        &:hover {
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          background-color: rgba($primary-color, 0.2);
+        }
+      }
+    }
+  }
+
+  &.fs-tabs-vertical {
+    > .mat-tab-header,
+    > .mat-tab-link-container {
+      .mat-tab-label, 
+      .mat-tab-link {        
+        &.cdk-keyboard-focused.mat-tab-label-active {
+          background-color: rgba($primary-color);
+        }
+
+        &.cdk-keyboard-focused:not(.mat-tab-label-active),
+        &:hover:not(.mat-tab-label-active) {
+          border-radius: 4px;
+          background-color: rgba($primary-color, 0.2);
+        }
+      }
+    }
   }
 }

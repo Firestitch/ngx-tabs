@@ -9,5 +9,5 @@ export class FsTabsTabDirective {
   
   @Input() public name;
   @Input() public data;
-  
+
 }

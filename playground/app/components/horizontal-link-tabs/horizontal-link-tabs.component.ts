@@ -8,8 +8,12 @@ import { Component } from '@angular/core';
 export class HorizontalLinkTabsComponent {
   public navLinks = [
     {
-      path: ['tabs'],
-      label: 'Tabs',
+      path: ['tabs/a'],
+      label: 'Tabs A',
+    },
+    {
+      path: ['tabs/b'],
+      label: 'Tabs B',
     },
   ];
 
