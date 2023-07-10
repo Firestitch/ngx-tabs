@@ -13,11 +13,7 @@ $primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-
     > .mat-tab-link-container {
       .mat-tab-label, 
       .mat-tab-link { 
-        &.cdk-keyboard-focused.mat-tab-label-active {
-          background-color: transparent !important;
-          color: inherit ;
-        }
-
+        &.cdk-keyboard-focused,
         &:hover {
           border-top-right-radius: 4px;
           border-top-left-radius: 4px;
