@@ -13,7 +13,7 @@ $primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-
     > .mat-tab-link-container {
       .mat-tab-label, 
       .mat-tab-link { 
-        &.cdk-keyboard-focused,
+        &.cdk-focused,
         &:hover {
           border-top-right-radius: 4px;
           border-top-left-radius: 4px;
@@ -28,11 +28,11 @@ $primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-
     > .mat-tab-link-container {
       .mat-tab-label, 
       .mat-tab-link {        
-        &.cdk-keyboard-focused.mat-tab-label-active {
+        &.cdk-focused.mat-tab-label-active {
           background-color: rgba($primary-color);
         }
 
-        &.cdk-keyboard-focused:not(.mat-tab-label-active),
+        &.cdk-focused:not(.mat-tab-label-active),
         &:hover:not(.mat-tab-label-active) {
           border-radius: 4px;
           background-color: rgba($primary-color, 0.2);
