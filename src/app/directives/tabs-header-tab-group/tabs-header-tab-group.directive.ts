@@ -1,7 +1,8 @@
-import { 
+import {
+  AfterViewInit,
   ChangeDetectorRef,
-  ContentChildren, Directive, ElementRef, EventEmitter, Inject, 
-  Input, NgZone, OnChanges, Optional, Output, QueryList, Renderer2, SimpleChange, SimpleChanges 
+  ContentChildren, Directive, ElementRef, EventEmitter, Inject,
+  Input, NgZone, OnChanges, Optional, Output, QueryList, Renderer2, SimpleChange, SimpleChanges
 } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
@@ -24,13 +25,13 @@ import { filter, map, takeUntil } from 'rxjs/operators';
   providers: [
     {
       provide: MAT_TABS_CONFIG,
-      useValue: { animationDuration : '0ms' },
+      useValue: { animationDuration: '0ms' },
     },
   ],
 })
-export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective implements OnChanges {
+export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective implements OnChanges, AfterViewInit {
 
-  @ContentChildren(FsTabsTabDirective, { descendants: true }) 
+  @ContentChildren(FsTabsTabDirective, { descendants: true })
   private _fsTabs: QueryList<FsTabsTabDirective>;
 
   @Input()
@@ -59,20 +60,20 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
   ) {
     super(_tabsConfig, _renderer, _breakpointObserver, _ngZone, _el);
   }
-  
+
   public getMatTabHeaderEl() {
     return (this._tabGroup?._tabHeader as any)._elementRef?.nativeElement;
   }
 
   public ngAfterViewInit(): void {
     super.ngAfterViewInit();
-   
-    if(this.selected) {
+
+    if (this.selected) {
       setTimeout(() => {
         this.selectTab(this.selected);
-      });
+      }, 300); // TODO fix me
     }
-    
+
     this._tabGroup.selectedIndexChange
       .pipe(
         map((index: number) => {
@@ -80,7 +81,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
         }),
         filter((tab: FsTabsTabDirective) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
         takeUntil(this._destroy$),
-      )        
+      )
       .subscribe((tab: FsTabsTabDirective) => {
         this.selected = tab.name;
         this.selectedChange.emit(tab.name);
@@ -92,7 +93,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
           return this._getFsTab(index);
         }),
         takeUntil(this._destroy$),
-      )        
+      )
       .subscribe((tab: FsTabsTabDirective) => {
         this.selectedDataChange.emit(tab.data);
       });
@@ -110,10 +111,12 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
         return name === fsTab.name;
       });
 
-      if(index !== -1) {
-        this._tabGroup.selectedIndex = index;
-        this._cdRef.markForCheck();
-      }
+    if (index !== -1) {
+      this._tabGroup.selectedIndex = index;
+      this._tabGroup.focusTab(index);
+
+      this._cdRef.markForCheck();
+    }
   }
 
   private _getFsTab(index: number): FsTabsTabDirective {
