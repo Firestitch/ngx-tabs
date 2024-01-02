@@ -1,5 +1,5 @@
 @use './variables';
-@use '~@firestitch/style/variables' as fs-style-variables;
+@use 'node_modules/@firestitch/style/variables' as fs-style-variables;
 @use '@angular/material' as mat;
 
 .fs-tabs-vertical {

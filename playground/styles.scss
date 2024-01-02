@@ -1,5 +1,5 @@
-@use '~@firestitch/component-tools/assets/playground.scss';
-@use '~@firestitch/style/variables' with (
+@use 'node_modules/@firestitch/component-tools/assets/playground.scss';
+@use 'node_modules/@firestitch/style/variables' with (
   $palette: playground.$primary-palette
 );
 
