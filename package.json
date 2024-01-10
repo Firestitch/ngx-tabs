@@ -2,7 +2,7 @@
   "name": "@firestitch/tabs",
   "title": "Tabs",
   "description": "@firestitch/tabs",
-  "version": "12.3.1",
+  "version": "12.3.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-package"
@@ -51,7 +51,7 @@
     "@firestitch/file": "^12.15.0",
     "@firestitch/iframe": "^12.0.7",
     "@firestitch/label": "^12.0.2",
-    "@firestitch/lint": "^12.0.18",
+    "@firestitch/lint": "^12.0.20",
     "@firestitch/menu": "^12.2.2",
     "@firestitch/message": "^12.3.1",
     "@firestitch/store": "^12.1.1",

@@ -9,23 +9,21 @@ import {
   OnInit,
   Renderer2,
 } from '@angular/core';
+
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 import { Subject } from 'rxjs';
-import { map, takeUntil, tap, } from 'rxjs/operators';
+import { map, takeUntil, tap } from 'rxjs/operators';
 
 import { FS_TABS_CONFIG } from '../../fs-tabs-config.provider';
 import { IFsTabsConfig } from '../../interfaces/tabs-config.interface';
 
 @Directive()
 export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDestroy, OnInit {
-  
-  @Input()
-  public mobileSticky;
+
+  @Input() public mobileSticky;
 
   protected _destroy$ = new Subject<void>();
-
-  public abstract getMatTabHeaderEl();
 
   constructor(
     @Inject(FS_TABS_CONFIG) private _tabsConfig: IFsTabsConfig,
@@ -65,7 +63,6 @@ export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDest
       .pipe(
         map((state) => !state.matches),
         tap((isMobile: boolean) => this._updateStickyPosition(isMobile)),
-        tap((isMobile) => this._updateMargins(isMobile)),
         takeUntil(this._destroy$),
       )
       .subscribe();
@@ -81,41 +78,6 @@ export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDest
     }
   }
 
-  private _updateMargins(isMobile) {
-    const el = this.getMatTabHeaderEl();
-    const margins = this._getMargins(isMobile);
-    el.style.marginRight = margins[0];
-    el.style.marginLeft = margins[1];
-  }
+  public abstract getMatTabHeaderEl();
 
-  private _getMargins(isMobile) {
-    let margins = [null, null];
-    if(isMobile) {
-      const el = this._getOffsetElement(this.element);
-      if(el) {
-        const style = getComputedStyle(el);
-        margins = [`-${style.paddingRight}`,`-${style.paddingLeft}`];
-      }
-    }
-
-    return margins;
-  }
-
-  private _getOffsetElement(el) {
-    if(el) {
-      if(
-        el.classList &&
-        (
-          el.classList.contains('mat-dialog-content') ||
-          el.classList.contains('mat-sidenav-content')
-        )
-      ) {
-        return el;
-      }
-
-      return this._getOffsetElement(el.parentNode);
-    }
-
-    return null;
-  }
 }

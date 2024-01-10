@@ -31,9 +31,6 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 })
 export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective implements OnChanges, AfterViewInit {
 
-  @ContentChildren(FsTabsTabDirective, { descendants: true })
-  private _fsTabs: QueryList<FsTabsTabDirective>;
-
   @Input()
   public orientation: 'horizontal' | 'vertical' = 'horizontal';
 
@@ -49,6 +46,9 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
   @Output()
   public selectedDataChange = new EventEmitter<any>();
 
+  @ContentChildren(FsTabsTabDirective, { descendants: true })
+  private _fsTabs: QueryList<FsTabsTabDirective>;
+  
   constructor(
     _renderer: Renderer2,
     _breakpointObserver: BreakpointObserver,
