@@ -1,5 +1,5 @@
 @use './variables';
-@use 'node_modules/@firestitch/style/variables' as fs-style-variables;
+@use '@firestitch/style/variables' as fs-style-variables;
 @use '@angular/material' as mat;
 
 .fs-tabs-vertical {
@@ -14,7 +14,7 @@
     }
   }
 
-  @media (min-width: fs-style-variables.$break-xsmall)  {  
+  @media (min-width: fs-style-variables.$break-xsmall)  {
     > .mat-tab-header,
     &.mat-tab-header {
       border: none;
@@ -31,13 +31,13 @@
         justify-content: start;
         min-width: auto;
         height: 38px;
-        opacity: 1;  
+        opacity: 1;
 
         &.mat-tab-label-active {
           background-color: variables.$primary-color;
           color: #fff;
           border-radius: 4px;
-        }      
+        }
       }
 
       .mat-tab-labels {
