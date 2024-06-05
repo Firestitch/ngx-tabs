@@ -5,7 +5,6 @@
   <mat-tab label="Tab 1" name="tab1">
     <ng-template matTabContent>
       Tab 1 Content
-
       <mat-tab-group>
         <mat-tab label="Inner 1">
           <ng-template matTabContent>
@@ -51,6 +50,18 @@
       Tab 6 Content
     </ng-template>
   </mat-tab>
+
+  <mat-tab label="Tab 7" name="tab7">
+    <ng-template matTabContent>
+      Tab 7 Content
+    </ng-template>
+  </mat-tab>
+
+  <mat-tab label="Tab 8" name="tab8">
+    <ng-template matTabContent>
+      Tab 8 Content
+    </ng-template>
+  </mat-tab>
 </mat-tab-group>
 
 <button 
@@ -64,21 +75,3 @@
   <legend>Selected Tab</legend>
   {{tab}}
 </fieldset>
-
-<br><br><br>
-
-<nav mat-tab-nav-bar fsTabs orientation="vertical">
-  <a mat-tab-link
-     routerLink="#"
-     [active]="true">
-    Long Link A
-  </a>
-  <a mat-tab-link
-     routerLink="#">
-    Long Link B
-  </a> 
-  <a mat-tab-link
-     routerLink="#">
-    Long Link C
-  </a>    
-</nav>

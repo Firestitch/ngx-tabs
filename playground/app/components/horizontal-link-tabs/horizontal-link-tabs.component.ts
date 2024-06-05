@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 
 @Component({
   selector: 'horizontal-link-tabs',
-  templateUrl: 'horizontal-link-tabs.component.html',
+  templateUrl: './horizontal-link-tabs.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HorizontalLinkTabsComponent {
   public navLinks = [

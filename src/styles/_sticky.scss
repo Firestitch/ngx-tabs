@@ -6,10 +6,6 @@
   z-index: 2;
   background-color: #fff;
 
-  .mat-tab-link, .mat-tab-label {
-    height: variables.$tab-sticky-height;
-  }
-
   .mat-tab-label-container {
     overflow: hidden;
   }

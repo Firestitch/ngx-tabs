@@ -2,17 +2,19 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   ContentChildren, Directive, ElementRef, EventEmitter, Inject,
-  Input, NgZone, OnChanges, Optional, Output, QueryList, Renderer2, SimpleChange, SimpleChanges
+  Input, NgZone, OnChanges, Optional, Output, QueryList, Renderer2,
+  SimpleChanges,
 } from '@angular/core';
-import { BreakpointObserver } from '@angular/cdk/layout';
 
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MAT_TABS_CONFIG, MatTabGroup } from '@angular/material/tabs';
 
-import { FsTabsHeaderBaseDirective } from '../tabs-header-base/tabs-header-base';
+import { filter, map, takeUntil } from 'rxjs/operators';
+
 import { FS_TABS_CONFIG } from '../../fs-tabs-config.provider';
 import { IFsTabsConfig } from '../../interfaces/tabs-config.interface';
+import { FsTabsHeaderBaseDirective } from '../tabs-header-base/tabs-header-base';
 import { FsTabsTabDirective } from '../tabs-tab/tabs-tab.directive';
-import { filter, map, takeUntil } from 'rxjs/operators';
 
 
 @Directive({
@@ -80,7 +82,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
           return this._getFsTab(index);
         }),
         filter((tab: FsTabsTabDirective) => (!!tab && (this.selected === undefined || tab.name !== this.selected))),
-        takeUntil(this._destroy$),
+        takeUntil(this.destroy$),
       )
       .subscribe((tab: FsTabsTabDirective) => {
         this.selected = tab.name;
@@ -92,7 +94,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
         map((index: number) => {
           return this._getFsTab(index);
         }),
-        takeUntil(this._destroy$),
+        takeUntil(this.destroy$),
       )
       .subscribe((tab: FsTabsTabDirective) => {
         this.selectedDataChange.emit(tab.data);
@@ -121,6 +123,7 @@ export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective imp
 
   private _getFsTab(index: number): FsTabsTabDirective {
     const fsTabs = this._fsTabs.toArray();
+
     return fsTabs[index];
   }
 }

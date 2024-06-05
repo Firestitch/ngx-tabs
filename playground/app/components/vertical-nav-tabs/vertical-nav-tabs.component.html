@@ -1,0 +1,30 @@
+<fs-tab-nav>
+  <nav 
+      mat-tab-nav-bar 
+      [orientation]="'vertical'">
+    <a mat-tab-link
+        [routerLink]="['/tabs/a']"
+        routerLinkActive
+        #rlaA="routerLinkActive"
+        [active]="rlaA.isActive">
+      Long Link A
+    </a>
+    <a mat-tab-link
+        [routerLink]="['/tabs/b']"
+        routerLinkActive
+        #rlaB="routerLinkActive"
+        [active]="rlaB.isActive">
+        Long Link B
+    </a> 
+    <a mat-tab-link
+        [routerLink]="['/tabs/c']"
+        routerLinkActive
+        #rlaC="routerLinkActive"
+        [active]="rlaC.isActive">
+        Long Link C
+    </a>   
+  </nav>
+  <mat-tab-nav-panel>
+    Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content 
+  </mat-tab-nav-panel>
+</fs-tab-nav>

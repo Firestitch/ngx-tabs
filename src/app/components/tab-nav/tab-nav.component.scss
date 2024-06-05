@@ -1,0 +1,8 @@
+@use '@firestitch/style/variables' as fs-style-variables;
+
+@media (min-width: fs-style-variables.$break-xsmall)  {
+  :host {
+    display: flex;
+    align-items: flex-start;
+  }
+}

@@ -1,13 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 
 @Component({
   selector: 'tabs',
-  templateUrl: 'tabs.component.html',
+  templateUrl: './tabs.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsComponent implements OnInit, OnDestroy {
-
-  constructor() {}
+export class TabsComponent {
 
   public tabs = [
     { path: '/tabs/a', label: 'Long Tab A' },
@@ -19,12 +18,5 @@ export class TabsComponent implements OnInit, OnDestroy {
     { path: '/tabs/f', label: 'Long Tab F' },
     { path: '/tabs/g', label: 'Long Tab G' },
     { path: '/tabs/j', label: 'Long Tab J' },
-
   ];
-
-  public ngOnInit() {
-  }
-
-  public ngOnDestroy() {
-  }
 }

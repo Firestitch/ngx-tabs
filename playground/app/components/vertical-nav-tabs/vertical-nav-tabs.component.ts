@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 
 @Component({
-  selector: 'vertical-tabs',
-  templateUrl: './vertical-tabs.component.html',
-  styleUrls: ['./vertical-tabs.component.scss'],
+  selector: 'vertical-nav-tabs',
+  templateUrl: './vertical-nav-tabs.component.html',
+  styleUrls: ['./vertical-nav-tabs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VerticalTabsComponent {
+export class VerticalNavTabsComponent {
 
   public tab = 'tab2';
 

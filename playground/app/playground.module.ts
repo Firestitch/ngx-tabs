@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 
+import { FsDialogModule } from '@firestitch/dialog';
 import { FsExampleModule } from '@firestitch/example';
+import { FsLabelModule } from '@firestitch/label';
 import { FsMessageModule } from '@firestitch/message';
 import { FsTabsModule } from '@firestitch/tabs';
-import { FsLabelModule } from '@firestitch/label';
-import { AppMaterialModule } from './material.module';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { AppComponent } from './app.component';
 import {
   KitchenSinkComponent,
+  VerticalNavTabsComponent,
 } from './components';
-import { AppComponent } from './app.component';
-import { KitchenSinkConfigureComponent } from './components/kitchen-sink-configure';
-import { TabsComponent } from './components/tabs/tabs.component';
-import { TabAComponent, TabBComponent, TabCComponent, TabDComponent } from './components/tabs';
-import { FsDialogModule } from '@firestitch/dialog';
-import { DialogComponent } from './components/tabs/tab-a/dialog/dialog.component';
-import { VerticalTabsComponent } from './components/vertical-tabs/vertical-tabs.component';
-import { DialogVerticalComponent } from './components/dialog/dialog-vertical.component';
 import { DialogVerticalTabsComponent } from './components/dialog-vertical-tabs/dialog-vertical-tabs.component';
+import { DialogVerticalComponent } from './components/dialog/dialog-vertical.component';
 import { HorizontalLinkTabsComponent } from './components/horizontal-link-tabs/horizontal-link-tabs.component';
+import { KitchenSinkConfigureComponent } from './components/kitchen-sink-configure';
+import { TabAComponent, TabBComponent, TabCComponent, TabDComponent } from './components/tabs';
+import { DialogComponent } from './components/tabs/tab-a/dialog/dialog.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { VerticalTabsComponent } from './components/vertical-tabs/vertical-tabs.component';
+import { AppMaterialModule } from './material.module';
 
 const routes: Routes = [
   {
@@ -31,7 +35,7 @@ const routes: Routes = [
   { path: 'tabs',
     component: TabsComponent,
     children: [
-      { path: '', redirectTo: 'a', pathMatch: 'full'},
+      { path: '', redirectTo: 'a', pathMatch: 'full' },
       { path: 'a', component: TabAComponent },
       { path: 'b', component: TabBComponent },
       { path: 'c', component: TabCComponent },
@@ -42,12 +46,12 @@ const routes: Routes = [
       { path: 'g', component: TabDComponent },
       { path: 'j', component: TabAComponent },
 
-    ]
+    ],
   },
 ];
 
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     FsTabsModule.forRoot({
@@ -76,6 +80,7 @@ const routes: Routes = [
     DialogVerticalComponent,
     VerticalTabsComponent,
     HorizontalLinkTabsComponent,
+    VerticalNavTabsComponent,
   ],
 })
 export class PlaygroundModule {

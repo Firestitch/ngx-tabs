@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'list',
@@ -10,16 +10,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
       height: 250px;
       overflow: scroll;
     }
-    `
-  ]
+    `,
+  ],
 })
-export class TabBComponent implements OnInit, OnDestroy {
+export class TabBComponent {
 
-  constructor() { }
-
-  public ngOnInit() {
-  }
-
-  public ngOnDestroy() {
-  }
 }

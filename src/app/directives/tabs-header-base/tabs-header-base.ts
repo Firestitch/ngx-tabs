@@ -12,7 +12,7 @@ import {
 
 import { BreakpointObserver } from '@angular/cdk/layout';
 
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap } from 'rxjs/operators';
 
 import { FS_TABS_CONFIG } from '../../fs-tabs-config.provider';
@@ -23,7 +23,7 @@ export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDest
 
   @Input() public mobileSticky;
 
-  protected _destroy$ = new Subject<void>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     @Inject(FS_TABS_CONFIG) private _tabsConfig: IFsTabsConfig,
@@ -41,6 +41,10 @@ export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDest
 
   public get element() {
     return this._el.nativeElement;
+  }
+
+  public get destroy$(): Observable<any> {
+    return this._destroy$.asObservable();
   }
 
   public ngAfterViewInit(): void {
