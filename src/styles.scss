@@ -24,15 +24,16 @@ $primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-
   }
 }
 
-.mat-tab-group .mat-tab-header {
-  .mat-tab-link-container {
-    overflow: auto;
-  }
+// Removed for now. Have to figure out scrolling to selected tab
+// .mat-tab-group .mat-tab-header {
+//   .mat-tab-link-container {
+//     overflow: auto;
+//   }
 
-  .mat-tab-header-pagination {
-    display: none !important;
-  }
-}
+//   .mat-tab-header-pagination {
+//     display: none !important;
+//   }
+// }
 
 @media (max-width: fs-style-variables.$break-xsmall)  {
   .mat-tab-nav-bar .mat-tab-link, 
