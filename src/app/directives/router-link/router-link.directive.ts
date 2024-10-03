@@ -5,7 +5,7 @@ import {
   Optional,
   Self
 } from '@angular/core';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { MatTabLink } from '@angular/material/tabs';
 
@@ -21,7 +21,7 @@ export class FsRouterLinkDirective {
   constructor(
     private _elementRef: ElementRef,
     @Optional() @Self() private _matTab: MatTabLink,
-    @Optional() @Self() private _routerLink: RouterLinkWithHref,
+    @Optional() @Self() private _routerLink: RouterLink,
   ) {
     this._updateReplaceUrl();
   }
