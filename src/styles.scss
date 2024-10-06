@@ -6,7 +6,7 @@
 @forward './styles/vertical';
 @forward './styles/sticky';
 
-$primary-color: mat.get-color-from-palette(fs-style-variables.$palette, primary-rgb) !default;
+$primary-color: mat.m2-get-color-from-palette(fs-style-variables.$palette, primary-rgb) !default;
 
 .mat-tab-nav-bar:not(.fs-tabs-vertical),
 .mat-tab-group:not(.fs-tabs-vertical) {
