@@ -2,66 +2,41 @@
 @use '@firestitch/style/variables' as fs-style-variables;
 @use '@angular/material' as mat;
 
-.fs-tabs-vertical {
-  .mat-dialog-content {
-    margin-bottom: -24px;
-  }
 
-  @media (max-width: fs-style-variables.$break-xsmall) {
-    .buttons button {
+@media (min-width: fs-style-variables.$break-xsmall)  {
+  mat-tab-group.fs-tabs-vertical {
+    flex-direction: row;
+
+    .mat-mdc-tab-body-wrapper {
+      padding-left: 24px;
       width: 100%;
-      display: block;
+      box-sizing: border-box;
     }
   }
 
-  @media (min-width: fs-style-variables.$break-xsmall)  {
-    > .mat-tab-header,
-    &.mat-tab-header {
-      border: none;
-      margin-right: 40px;
-
-      .mat-ink-bar {
-        display: none;
-      }
-
-      .mat-tab-label,
-      > .mat-tab-link-container .mat-tab-link {
-        text-transform: initial;
-        font-size: 109%;
-        justify-content: start;
-        min-width: auto;
-        height: 38px;
-        opacity: 1;
-
-        &.mat-tab-label-active {
-          background-color: variables.$primary-color;
-          color: #fff;
-          border-radius: 4px;
-        }
-      }
-
-      .mat-tab-labels {
-        flex-direction: column;
-      }
-
-      &.mat-tab-nav-bar {
-        margin: 0;
-        border: 0;
-        width: auto;
-        margin-right: 40px;
-
-        .mat-tab-links {
-          flex-direction: column;
-          display: inline-flex;
-        }
-      }
+  .fs-tabs-vertical {
+    .mat-dialog-content {
+      margin-bottom: -24px;
     }
 
-    &.mat-tab-group {
-      flex-direction: row;
+    .mat-mdc-tab-links,
+    .mat-mdc-tab-labels {
+      display: flex;
+      flex-direction: column;
+    }
 
-      > .mat-tab-body-wrapper {
-        width: 100%;
+    + .mat-mdc-tab-nav-panel {
+      margin-left: 24px;
+    }
+
+    .fs-tabs-horizontal {
+      .mat-mdc-tab-links,
+      .mat-mdc-tab-labels {
+        flex-direction: row;
+      }
+  
+      + .mat-mdc-tab-nav-panel {
+        margin-left: unset;
       }
     }
   }

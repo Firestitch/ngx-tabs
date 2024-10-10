@@ -1,4 +1,6 @@
-<nav mat-tab-nav-bar>
+<nav 
+    mat-tab-nav-bar 
+    [tabPanel]="tabPanel">
   <a mat-tab-link
       *ngFor="let tab of tabs"
       [routerLink]="tab.path"
@@ -8,4 +10,6 @@
     {{tab.label}}
   </a>
 </nav>
-<router-outlet></router-outlet>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

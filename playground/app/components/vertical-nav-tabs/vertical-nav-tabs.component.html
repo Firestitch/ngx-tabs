@@ -1,6 +1,7 @@
 <fs-tab-nav>
   <nav 
-      mat-tab-nav-bar 
+      mat-tab-nav-bar
+      [tabPanel]="tabPanel" 
       [orientation]="'vertical'">
     <a mat-tab-link
         [routerLink]="['/tabs/a']"
@@ -24,7 +25,7 @@
         Long Link C
     </a>   
   </nav>
-  <mat-tab-nav-panel>
+  <mat-tab-nav-panel #tabPanel>
     Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content 
   </mat-tab-nav-panel>
 </fs-tab-nav>
