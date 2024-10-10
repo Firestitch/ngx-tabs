@@ -15,6 +15,34 @@
   }
 
   .fs-tabs-vertical {
+
+    .mat-mdc-tab-links,
+    > .mat-mdc-tab-header {
+
+      .mat-mdc-tab-ripple,
+      .mdc-tab__ripple::before {
+        border-radius: 12px;
+      }
+
+      .mdc-tab {
+        height: 36px;
+      }
+
+      .mdc-tab.mdc-tab-indicator--active {
+        background-color: var(--mdc-tab-indicator-active-indicator-color);
+        border-radius: 12px;
+
+        .mdc-tab__text-label {
+          color: #fff;
+          transition: none;
+        }
+
+        .mdc-tab-indicator {
+          display: none;
+        }
+      }
+    }
+
     .mat-dialog-content {
       margin-bottom: -24px;
     }
