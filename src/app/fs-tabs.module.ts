@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
+
 import { FsTabNavComponent } from './components/tab-nav/tab-nav.component';
 import {
   FsRouterLinkDirective, FsTabsHeaderNavDirective,
@@ -39,7 +40,10 @@ export class FsTabsModule {
     return {
       ngModule: FsTabsModule,
       providers: [
-        { provide: FS_TABS_CONFIG, useValue: config },
+        { 
+          provide: FS_TABS_CONFIG, 
+          useValue: config, 
+        },
       ],
     };
   }

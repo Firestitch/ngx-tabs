@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
+import { MAT_TABS_CONFIG } from '@angular/material/tabs';
+
 import { FsDialogModule } from '@firestitch/dialog';
 import { FsExampleModule } from '@firestitch/example';
 import { FsLabelModule } from '@firestitch/label';
@@ -81,6 +83,14 @@ const routes: Routes = [
     VerticalTabsComponent,
     HorizontalLinkTabsComponent,
     VerticalNavTabsComponent,
+  ],
+  providers: [
+    { 
+      provide: MAT_TABS_CONFIG, 
+      useValue: {
+        stretchTabs: false,
+      }, 
+    },
   ],
 })
 export class PlaygroundModule {
