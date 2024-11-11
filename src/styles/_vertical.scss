@@ -7,7 +7,7 @@
   mat-tab-group.fs-tabs-vertical {
     flex-direction: row;
 
-    .mat-mdc-tab-body-wrapper {
+    > .mat-mdc-tab-body-wrapper {
       padding-left: 24px;
       width: 100%;
       box-sizing: border-box;
