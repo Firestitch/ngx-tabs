@@ -4,15 +4,30 @@
 
 
 @media (min-width: fs-style-variables.$break-xsmall)  {
-  mat-tab-group.fs-tabs-vertical {
+  .fs-tabs-vertical {
     flex-direction: row;
 
+    // With mat-tab-group
+    > .mat-mdc-tab-header {
+      padding-right: 24px;
+    }
+
+    // With mat-tab-nav-bar
+    &.mat-mdc-tab-header {
+      padding-right: 24px;
+    }
+
     > .mat-mdc-tab-body-wrapper {
-      padding-left: 24px;
       width: 100%;
       box-sizing: border-box;
     }
   }
+
+  fs-tab-nav > ng-component {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 
   .fs-tabs-vertical {
 
