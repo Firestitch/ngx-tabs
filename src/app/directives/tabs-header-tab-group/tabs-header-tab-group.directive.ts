@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { MAT_TABS_CONFIG, MatTabGroup } from '@angular/material/tabs';
+import { MAT_TABS_CONFIG, MatTabGroup, MatTabsConfig } from '@angular/material/tabs';
 
 import { filter, map, takeUntil } from 'rxjs/operators';
 
@@ -27,11 +27,16 @@ import { FsTabsTabDirective } from '../tabs-tab/tabs-tab.directive';
   providers: [
     {
       provide: MAT_TABS_CONFIG,
-      useValue: { animationDuration: '0ms' },
+      useValue: { 
+        animationDuration: '0ms', 
+        stretchTabs: false,
+        dynamicHeight: false,
+      } as MatTabsConfig,
     },
   ],
 })
-export class FsTabsHeaderTabGroupDirective extends FsTabsHeaderBaseDirective implements OnChanges, AfterViewInit {
+export class FsTabsHeaderTabGroupDirective
+  extends FsTabsHeaderBaseDirective implements OnChanges, AfterViewInit {
 
   @Input()
   public orientation: 'horizontal' | 'vertical' = 'horizontal';
