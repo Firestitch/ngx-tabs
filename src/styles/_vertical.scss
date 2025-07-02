@@ -4,6 +4,11 @@
 
 
 @media (min-width: fs-style-variables.$break-xsmall)  {
+  fs-tab-nav > ng-component {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .fs-tabs-vertical {
     flex-direction: row !important;
 
@@ -21,14 +26,10 @@
       width: 100%;
       box-sizing: border-box;
     }
-  }
 
-  fs-tab-nav > ng-component {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .fs-tabs-vertical {
+    .mat-mdc-tab-link {
+      letter-spacing: normal;
+    }
 
     .mat-mdc-tab-links,
     > .mat-mdc-tab-header {
