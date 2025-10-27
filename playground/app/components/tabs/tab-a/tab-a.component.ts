@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatButton } from '@angular/material/button';
@@ -10,10 +10,8 @@ import { MatButton } from '@angular/material/button';
     imports: [MatButton],
 })
 export class TabAComponent implements OnInit, OnDestroy {
+  private _dialog = inject(MatDialog);
 
-  constructor(private _dialog: MatDialog) {
-
-  }
 
   public ngOnInit() {
 

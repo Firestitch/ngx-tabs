@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DialogVerticalComponent } from '../dialog/dialog-vertical.component';
@@ -13,10 +13,8 @@ import { MatButton } from '@angular/material/button';
     imports: [MatButton]
 })
 export class DialogVerticalTabsComponent {
+  private _dialog = inject(MatDialog);
 
-  public constructor(
-    private _dialog: MatDialog
-  ) {}
 
   public open() {
     this._dialog.open(DialogVerticalComponent);

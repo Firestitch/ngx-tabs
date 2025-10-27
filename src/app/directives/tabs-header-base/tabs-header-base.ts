@@ -1,14 +1,4 @@
-import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-  Inject,
-  Input,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy, OnInit, Renderer2, inject } from '@angular/core';
 
 import { BreakpointObserver } from '@angular/cdk/layout';
 
@@ -24,14 +14,11 @@ export abstract class FsTabsHeaderBaseDirective implements AfterViewInit, OnDest
   @Input() public mobileSticky;
 
   private _destroy$ = new Subject<void>();
-
-  constructor(
-    @Inject(FS_TABS_CONFIG) private _tabsConfig: IFsTabsConfig,
-    private _renderer: Renderer2,
-    private _breakpointObserver: BreakpointObserver,
-    private _ngZone: NgZone,
-    private _el: ElementRef,
-  ) {}
+  private _tabsConfig: IFsTabsConfig = inject(FS_TABS_CONFIG);
+  private _renderer = inject(Renderer2);
+  private _breakpointObserver = inject(BreakpointObserver);
+  private _ngZone = inject(NgZone);
+  private _el = inject(ElementRef);
 
   public ngOnInit(): void {
     if(this.mobileSticky === undefined) {

@@ -1,10 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  Optional,
-  Self
-} from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { MatTabLink } from '@angular/material/tabs';
@@ -15,15 +9,15 @@ import { MatTabLink } from '@angular/material/tabs';
     standalone: true,
 })
 export class FsRouterLinkDirective {
+  private _elementRef = inject(ElementRef);
+  private _matTab = inject(MatTabLink, { optional: true, self: true });
+  private _routerLink = inject(RouterLink, { optional: true, self: true });
+
 
   @Input()
   public replaceUrl: boolean;
 
-  constructor(
-    private _elementRef: ElementRef,
-    @Optional() @Self() private _matTab: MatTabLink,
-    @Optional() @Self() private _routerLink: RouterLink,
-  ) {
+  constructor() {
     this._updateReplaceUrl();
   }
 

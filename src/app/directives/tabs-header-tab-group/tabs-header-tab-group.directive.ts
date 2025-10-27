@@ -1,43 +1,37 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  ContentChildren, Directive, ElementRef, EventEmitter, Inject,
-  Input, NgZone, OnChanges, Optional, Output, QueryList, Renderer2,
-  SimpleChanges,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, ContentChildren, Directive, EventEmitter, Input, OnChanges, Output, QueryList, SimpleChanges, inject } from '@angular/core';
 
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { MAT_TABS_CONFIG, MatTabGroup, MatTabsConfig } from '@angular/material/tabs';
 
 import { filter, map, takeUntil } from 'rxjs/operators';
 
-import { FS_TABS_CONFIG } from '../../fs-tabs-config.provider';
-import { IFsTabsConfig } from '../../interfaces/tabs-config.interface';
 import { FsTabsHeaderBaseDirective } from '../tabs-header-base/tabs-header-base';
 import { FsTabsTabDirective } from '../tabs-tab/tabs-tab.directive';
 
 
 @Directive({
-    selector: 'mat-tab-group, matTabGroup, [matTabGroup]',
-    exportAs: 'fsTabsHeaderTabGroup',
-    host: {
-        '[class.fs-tabs-vertical]': 'orientation === "vertical"',
-        '[class.fs-tabs-horizontal]': 'orientation === "horizontal"',
+  selector: 'mat-tab-group, matTabGroup, [matTabGroup]',
+  exportAs: 'fsTabsHeaderTabGroup',
+  host: {
+    '[class.fs-tabs-vertical]': 'orientation === "vertical"',
+    '[class.fs-tabs-horizontal]': 'orientation === "horizontal"',
+  },
+  providers: [
+    {
+      provide: MAT_TABS_CONFIG,
+      useValue: {
+        animationDuration: '0ms',
+        stretchTabs: false,
+        dynamicHeight: false,
+      } as MatTabsConfig,
     },
-    providers: [
-        {
-            provide: MAT_TABS_CONFIG,
-            useValue: {
-                animationDuration: '0ms',
-                stretchTabs: false,
-                dynamicHeight: false,
-            } as MatTabsConfig,
-        },
-    ],
-    standalone: true,
+  ],
+  standalone: true,
 })
 export class FsTabsHeaderTabGroupDirective
   extends FsTabsHeaderBaseDirective implements OnChanges, AfterViewInit {
+  private _cdRef = inject(ChangeDetectorRef);
+  private _tabGroup = inject(MatTabGroup, { optional: true });
+
 
   @Input()
   public orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -56,18 +50,6 @@ export class FsTabsHeaderTabGroupDirective
 
   @ContentChildren(FsTabsTabDirective, { descendants: true })
   private _fsTabs: QueryList<FsTabsTabDirective>;
-  
-  constructor(
-    _renderer: Renderer2,
-    _breakpointObserver: BreakpointObserver,
-    _ngZone: NgZone,
-    _el: ElementRef,
-    private _cdRef: ChangeDetectorRef,
-    @Inject(FS_TABS_CONFIG) _tabsConfig: IFsTabsConfig,
-    @Optional() private _tabGroup: MatTabGroup,
-  ) {
-    super(_tabsConfig, _renderer, _breakpointObserver, _ngZone, _el);
-  }
 
   public getMatTabHeaderEl() {
     return (this._tabGroup?._tabHeader as any)._elementRef?.nativeElement;
