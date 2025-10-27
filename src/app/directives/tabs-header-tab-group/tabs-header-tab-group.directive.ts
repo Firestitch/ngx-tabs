@@ -18,22 +18,23 @@ import { FsTabsTabDirective } from '../tabs-tab/tabs-tab.directive';
 
 
 @Directive({
-  selector: 'mat-tab-group, matTabGroup, [matTabGroup]',
-  exportAs: 'fsTabsHeaderTabGroup',
-  host: {
-    '[class.fs-tabs-vertical]': 'orientation === "vertical"',
-    '[class.fs-tabs-horizontal]': 'orientation === "horizontal"',
-  },
-  providers: [
-    {
-      provide: MAT_TABS_CONFIG,
-      useValue: { 
-        animationDuration: '0ms', 
-        stretchTabs: false,
-        dynamicHeight: false,
-      } as MatTabsConfig,
+    selector: 'mat-tab-group, matTabGroup, [matTabGroup]',
+    exportAs: 'fsTabsHeaderTabGroup',
+    host: {
+        '[class.fs-tabs-vertical]': 'orientation === "vertical"',
+        '[class.fs-tabs-horizontal]': 'orientation === "horizontal"',
     },
-  ],
+    providers: [
+        {
+            provide: MAT_TABS_CONFIG,
+            useValue: {
+                animationDuration: '0ms',
+                stretchTabs: false,
+                dynamicHeight: false,
+            } as MatTabsConfig,
+        },
+    ],
+    standalone: true,
 })
 export class FsTabsHeaderTabGroupDirective
   extends FsTabsHeaderBaseDirective implements OnChanges, AfterViewInit {

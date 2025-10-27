@@ -11,21 +11,18 @@ import { IFsTabsConfig } from './interfaces/tabs-config.interface';
 
 
 @NgModule({
-  imports: [],
-  declarations: [
-    FsRouterLinkDirective,
-    FsTabsHeaderTabGroupDirective,
-    FsTabsHeaderNavDirective,
-    FsTabsTabDirective,
-    FsTabNavComponent,
-  ],
-  exports: [
-    FsRouterLinkDirective,
-    FsTabsHeaderTabGroupDirective,
-    FsTabsHeaderNavDirective,
-    FsTabsTabDirective,
-    FsTabNavComponent,
-  ],
+    imports: [FsRouterLinkDirective,
+        FsTabsHeaderTabGroupDirective,
+        FsTabsHeaderNavDirective,
+        FsTabsTabDirective,
+        FsTabNavComponent],
+    exports: [
+        FsRouterLinkDirective,
+        FsTabsHeaderTabGroupDirective,
+        FsTabsHeaderNavDirective,
+        FsTabsTabDirective,
+        FsTabNavComponent,
+    ],
 })
 export class FsTabsModule {
   public static forRoot(config?: IFsTabsConfig): ModuleWithProviders<FsTabsModule> {

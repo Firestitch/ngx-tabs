@@ -11,7 +11,8 @@ import { MatTabLink } from '@angular/material/tabs';
 
 
 @Directive({
-  selector: '[routerLink]',
+    selector: '[routerLink]',
+    standalone: true,
 })
 export class FsRouterLinkDirective {
 
