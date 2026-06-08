@@ -64,7 +64,7 @@
     }
 
     .mat-mdc-tab-links,
-    .mat-mdc-tab-labels {
+    > .mat-mdc-tab-header .mat-mdc-tab-labels {
       display: flex;
       flex-direction: column;
     }
